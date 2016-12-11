@@ -1,9 +1,9 @@
 import { expect } from 'chai';
 import { List, Map } from 'immutable';
 
-describe("Immutability", () {
+describe("Immutability", () => {
 
-	describe("A tree", () {
+	describe("A tree", () => {
 		function addMovie(currentState, movie) {
 		  return currentState.update('movies', movies => movies.push(movie));
 		}

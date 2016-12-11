@@ -20,7 +20,7 @@ describe("application logic", () => {
 	describe("next", () => {
 
 		it('takes the next two entries under vote', () => {
-			const vote = Map({
+			const state = Map({
 				entries: List.of('Trainspotting', '28 Days Later', 'Sunshine')
 			});
 			const nextState = next(state);
@@ -61,7 +61,7 @@ describe("application logic", () => {
 						'28 Days Later': 4
 					})
 				}),
-				entries: List.of('Sunshine', 'Millions')
+				entries: List.of('Sunshine', 'Millions', '127 Hours')
 			});
 			const nextState = next(state);
 			expect(nextState).to.equal(Map({
@@ -72,6 +72,22 @@ describe("application logic", () => {
 			}));
 		});
 
+		it('marks the winner when there\'s one entry left', () => {
+			const state = Map({
+				vote: Map({
+					pair: List.of('Trainspotting', '28 Days Later'),
+					tally: Map({
+						'Trainspotting': 9,
+						'28 Days Later': 4
+					})
+				}),
+				entries: List()
+			});
+			const nextState = next(state);
+			expect(nextState).to.equal(Map({
+				winner: 'Trainspotting'
+			}));
+		});
 	});
 
 
