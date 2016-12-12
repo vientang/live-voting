@@ -4,7 +4,9 @@
   "description": "An application for organizing live votes. The idea is that we'll have a collection of things to vote from: Movies, songs, programming languages, quotes, anything. The app will put them against each other in pairs, so that on each round people can vote for their favorite of the pair. When there's just one thing left, that's the winner. Votes are displayed in real time.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive"
+    "start": "babel-node index.js",
+    "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive",
+    "test:watch": "npm run test -- --watch"
   },
   "repository": {
     "type": "git",
@@ -31,6 +33,8 @@
     "mocha": "^3.2.0"
   },
   "dependencies": {
-    "immutable": "^3.8.1"
+    "immutable": "^3.8.1",
+    "redux": "^3.6.0",
+    "socket.io": "^1.7.2"
   }
 }
